@@ -4,6 +4,10 @@
  */
 package com.pedro.clickbus.api.controller;
 
+import com.pedro.clickbus.api.model.UpdatePlace;
+import com.pedro.clickbus.domain.exception.AlreadyRegisteredException;
+import com.pedro.clickbus.domain.exception.NameNotFoundException;
+import com.pedro.clickbus.domain.exception.SlugNotFoundException;
 import com.pedro.clickbus.domain.model.Place;
 import com.pedro.clickbus.domain.service.IPlaceService;
 import jakarta.validation.Valid;
@@ -32,14 +36,14 @@ public class PlaceController {
     }
 
     @PostMapping
-    public ResponseEntity<Place> createPlace(@Valid @RequestBody Place place) {
+    public ResponseEntity<Place> createPlace(@Valid @RequestBody Place place) throws AlreadyRegisteredException {
         Place newPlace = placeService.savePlace(place);
         return ResponseEntity.status(201).body(newPlace);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Place> getPlace(@PathVariable int id) {
-        Place place = placeService.getPlace(id);
+    @GetMapping("/{slug}")
+    public ResponseEntity<Place> getPlace(@PathVariable String slug) throws SlugNotFoundException {
+        Place place = placeService.getPlace(slug);
         return ResponseEntity.ok(place);
 
     }
@@ -50,17 +54,16 @@ public class PlaceController {
         return ResponseEntity.ok(places);
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<List<Place>> getPlacesByName(@PathVariable String name) {
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<Place>> getPlacesByName(@PathVariable String name) throws NameNotFoundException {
         List<Place> places = placeService.getPlaces(name);
         return ResponseEntity.ok(places);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<String> updatePlace(@RequestBody Place place, @PathVariable int id) {
-        placeService.updatePlace(place, id);
-        return ResponseEntity.status(204).body("Place updated successfully!");
-
+    @PutMapping("/{slug}")
+    public ResponseEntity<Object> updatePlace(@Valid @RequestBody UpdatePlace updatePlace, @PathVariable String slug) throws SlugNotFoundException {
+        placeService.updatePlace(updatePlace.getPlace(), slug);
+        return ResponseEntity.noContent().build();
     }
 
 }

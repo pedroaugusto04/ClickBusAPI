@@ -6,6 +6,7 @@ package com.pedro.clickbus.domain.repository;
 
 import com.pedro.clickbus.domain.model.Place;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,8 +17,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IPlaceRepository extends JpaRepository<Place,String> {
     
-    public Place findById(int id);
+    public Optional<Place> findBySlug(String slug);
     
-    public List<Place> findByName(String name);
+    public Optional<List<Place>> findByName(String name);
     
 }

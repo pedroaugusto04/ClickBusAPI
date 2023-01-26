@@ -1,1 +1,15 @@
+com/pedro/clickbus/api/exceptionhandler/ExceptionHandler.class
+com/pedro/clickbus/domain/exception/SlugNotFoundException.class
+com/pedro/clickbus/domain/validation/ValidationGroup$Update.class
+com/pedro/clickbus/domain/model/Place.class
 com/pedro/clickbus/ClickbusApplication.class
+com/pedro/clickbus/api/model/UpdatePlace.class
+com/pedro/clickbus/api/exceptionhandler/Field.class
+com/pedro/clickbus/domain/repository/IPlaceRepository.class
+com/pedro/clickbus/api/controller/PlaceController.class
+com/pedro/clickbus/domain/exception/NameNotFoundException.class
+com/pedro/clickbus/domain/validation/ValidationGroup.class
+com/pedro/clickbus/domain/service/IPlaceService.class
+com/pedro/clickbus/domain/exception/AlreadyRegisteredException.class
+com/pedro/clickbus/domain/service/PlaceService.class
+com/pedro/clickbus/api/exceptionhandler/Error.class

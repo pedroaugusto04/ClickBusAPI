@@ -4,6 +4,9 @@
  */
 package com.pedro.clickbus.domain.service;
 
+import com.pedro.clickbus.domain.exception.AlreadyRegisteredException;
+import com.pedro.clickbus.domain.exception.NameNotFoundException;
+import com.pedro.clickbus.domain.exception.SlugNotFoundException;
 import com.pedro.clickbus.domain.model.Place;
 import java.util.List;
 
@@ -13,15 +16,17 @@ import java.util.List;
  */
 public interface IPlaceService {
     
-    public Place savePlace(Place place);
+    public Place savePlace(Place place) throws AlreadyRegisteredException;
     
-    public Place getPlace(int id);
+    public Place getPlace(String slug) throws SlugNotFoundException;
     
     public List<Place> getPlaces();
     
-    public List<Place> getPlaces(String name);
+    public List<Place> getPlaces(String name) throws NameNotFoundException;
     
-    public void updatePlace(Place place, int id);  
+    public void updatePlace(Place place, String slug) throws SlugNotFoundException;  
     
-    public void placeAlreadyRegistered(Place place);
+    public void isPlaceAlreadyRegistered(Place place) throws AlreadyRegisteredException;
+    
+    public void updateFields(Place newPlace, Place oldPlace);
 }

@@ -1,1 +1,14 @@
-/home/pedro/Downloads/clickbus/src/main/java/com/pedro/clickbus/ClickbusApplication.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/api/exceptionhandler/Error.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/ClickbusApplication.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/api/exceptionhandler/ExceptionHandler.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/domain/validation/ValidationGroup.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/domain/service/IPlaceService.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/domain/exception/SlugNotFoundException.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/api/controller/PlaceController.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/api/model/UpdatePlace.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/domain/exception/NameNotFoundException.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/domain/repository/IPlaceRepository.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/domain/exception/AlreadyRegisteredException.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/domain/model/Place.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/api/exceptionhandler/Field.java
+/home/pedro/Documentos/GitHub/ClickBusAPI/src/main/java/com/pedro/clickbus/domain/service/PlaceService.java

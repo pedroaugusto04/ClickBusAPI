@@ -4,8 +4,12 @@
  */
 package com.pedro.clickbus.domain.service;
 
+import com.pedro.clickbus.domain.exception.AlreadyRegisteredException;
+import com.pedro.clickbus.domain.exception.NameNotFoundException;
+import com.pedro.clickbus.domain.exception.SlugNotFoundException;
 import com.pedro.clickbus.domain.model.Place;
 import com.pedro.clickbus.domain.repository.IPlaceRepository;
+import java.lang.reflect.Field;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +19,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PlaceService implements IPlaceService {
-    
+
     private IPlaceRepository placeRepository;
 
     public PlaceService(IPlaceRepository placeRepository) {
@@ -23,17 +27,16 @@ public class PlaceService implements IPlaceService {
     }
 
     @Override
-    public Place savePlace(Place place) {
-        //if (placeAlreadyRegistered)
+    public Place savePlace(Place place) throws AlreadyRegisteredException {
+        isPlaceAlreadyRegistered(place);
         return placeRepository.save(place);
-        
     }
 
     @Override
-    public Place getPlace(int id) {
-        // id not found exception
-        return placeRepository.findById(id);
-        
+    public Place getPlace(String slug) throws SlugNotFoundException {
+        Place place = placeRepository.findBySlug(slug).orElseThrow(() -> new SlugNotFoundException());
+        return place;
+
     }
 
     @Override
@@ -42,21 +45,39 @@ public class PlaceService implements IPlaceService {
     }
 
     @Override
-    public List<Place> getPlaces(String name) {
-        return placeRepository.findByName(name);
+    public List<Place> getPlaces(String name) throws NameNotFoundException {
+        List<Place> places = placeRepository.findByName(name).orElseThrow(() -> new NameNotFoundException());
+        return places;
     }
 
     @Override
-    public void updatePlace(Place newPlace, int id) {
-        Place oldPlace = placeRepository.findById(id);
-        newPlace.setId(oldPlace.getId());
+    public void updatePlace(Place newPlace, String slug) throws SlugNotFoundException {
+        Place oldPlace = placeRepository.findBySlug(slug).orElseThrow(() -> new SlugNotFoundException());
+        updateFields(newPlace, oldPlace);
+        newPlace.setSlug(oldPlace.getSlug());
+        newPlace.setCreatedAt(oldPlace.getCreatedAt());
         placeRepository.save(newPlace);
     }
 
     @Override
-    public void placeAlreadyRegistered(Place place) {
-        //
+    public void isPlaceAlreadyRegistered(Place place) throws AlreadyRegisteredException {
+        if (placeRepository.findBySlug(place.getSlug()).isPresent()) {
+            throw new AlreadyRegisteredException();
+        }
     }
-    
-    
+
+    @Override
+    public void updateFields(Place newPlace, Place oldPlace) {
+        Field[] fields = newPlace.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            field.setAccessible(true);
+            try {
+                if (field.get(newPlace) == null) {
+                    field.set(newPlace, field.get(oldPlace));
+                }
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
