@@ -7,11 +7,13 @@ package com.pedro.clickbus.domain.repository;
 import com.pedro.clickbus.domain.model.Place;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author pedro
  */
+@Repository
 public interface IPlaceRepository extends JpaRepository<Place,String> {
     
     public Place findById(int id);

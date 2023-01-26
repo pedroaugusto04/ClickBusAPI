@@ -7,11 +7,13 @@ package com.pedro.clickbus.domain.service;
 import com.pedro.clickbus.domain.model.Place;
 import com.pedro.clickbus.domain.repository.IPlaceRepository;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author pedro
  */
+@Service
 public class PlaceService implements IPlaceService {
     
     private IPlaceRepository placeRepository;

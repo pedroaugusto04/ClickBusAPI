@@ -37,7 +37,7 @@ public class PlaceController {
         return ResponseEntity.status(201).body(newPlace);
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<Place> getPlace(@PathVariable int id) {
         Place place = placeService.getPlace(id);
         return ResponseEntity.ok(place);
@@ -50,13 +50,13 @@ public class PlaceController {
         return ResponseEntity.ok(places);
     }
 
-    @GetMapping
+    @GetMapping("/{name}")
     public ResponseEntity<List<Place>> getPlacesByName(@PathVariable String name) {
         List<Place> places = placeService.getPlaces(name);
         return ResponseEntity.ok(places);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<String> updatePlace(@RequestBody Place place, @PathVariable int id) {
         placeService.updatePlace(place, id);
         return ResponseEntity.status(204).body("Place updated successfully!");
