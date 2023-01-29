@@ -9,18 +9,22 @@
     <title>ClickBusAPI</title>
 </head>
 <body>
-    <div class = "box">
-        <h1>ClickBusAPI</h1>
-        <form action = "">
-            <input  type ="text" class = "name"  name = "name" placeholder = "Name">
-            <input type = "text" class = "slug" name = "slug" placeholder = "Slug">
-            <input type = "text" class = "city" name = "city" placeholder = "City">
-            <input type = "text" class = "state" name = "state" placeholder = "State">
-            <button id = "buttonGet">GET</button>
-            <button id = "buttonSubmit">SUBMIT</button>
-            <button id = "buttonUpdate">UPDATE</button>
-        </form>
-    </div>
-
+    <main>
+        <div class = "form">
+            <h1>ClickBusAPI</h1>
+            <form class = "form" action = "">
+                <input type = "text" class = "name"  name = "name" placeholder = "Name">
+                <input type = "text" class = "slug"  name = "slug" placeholder = "Slug">
+                <input type = "text" class = "city"  name = "city" placeholder = "City">
+                <input type = "text" class = "state" name = "state" placeholder = "State">
+                <button id = "buttonGet">GET ALL</button>
+                <button id = "buttonGetName">GET BY NAME</button>
+                <button id = "buttonSubmit">SUBMIT</button>
+                <button id = "buttonUpdate">UPDATE</button>
+            </form>
+        </div>
+        <div class = "response">
+        </div>
+    </main>
 </body>
 </html>
