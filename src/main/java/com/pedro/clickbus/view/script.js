@@ -7,31 +7,36 @@ const Islug= document.querySelector(".slug");
 const Icity = document.querySelector(".city");
 const Istate = document.querySelector(".state");
 const responseDiv = document.querySelector(".response");
+const text = document.querySelector("#auxText");
 
 
 buttonSubmit.addEventListener("click",function(event){
     event.preventDefault();
+    cleanTable();
     createPlace();
-    clean();
+    cleanValues();
 });
 
 buttonGet.addEventListener("click",function(event){
     event.preventDefault();
+    cleanTable();
     getPlaces();
-    clean();
+    cleanValues();
 });
 
 
 buttonUpdate.addEventListener("click",function(event){
     event.preventDefault();
+    cleanTable();
     updatePlace();
-    clean();
+    cleanValues();
 });
 
 buttonGetByName.addEventListener("click",function(event){
     event.preventDefault();
+    cleanTable();
     getPlaceByName();
-    clean();
+    cleanValues();
 })
 
 
@@ -55,9 +60,11 @@ buttonGetByName.addEventListener("click",function(event){
     .then(response => response.json())
     .then(data => {
         dataText = JSON.stringify(data);
-        responseDiv.textContent = dataText;
+        alert(dataText);
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+        alert(error);
+    })
     } else {
         alert("All fields are required")
     }
@@ -68,10 +75,14 @@ function getPlaceByName(){
         fetch("http://localhost:8080/api/places/name/" + Iname.value)
         .then(response => response.json())
         .then(data => {
-            dataText = JSON.stringify(data);
-            responseDiv.textContent = dataText;
+            if (data.length > 0){
+                cleanText();
+                loadTable(data);    
+            } else {
+                text.innerHTML = "NO DATA";
+            }
         })
-        .catch(error => console.log(error))  
+        .catch(error => alert(error))  
     } else {
         alert("Name is required");
     }
@@ -81,10 +92,14 @@ function getPlaceByName(){
     fetch("http://localhost:8080/api/places")
     .then(response => response.json())
     .then(data => {
-        dataText = JSON.stringify(data);
-        responseDiv.textContent = dataText;
+        if (data.length > 0){
+            cleanText();
+            loadTable(data);    
+        } else {
+            text.innerHTML = "NO DATA";
+        }
     })
-    .catch(error => console.log(error))
+    .catch(error => alert(error))
 };
 
 
@@ -105,7 +120,7 @@ function updatePlace(){
         })
         .then(response => {
         if (response.status === 204){
-            responseDiv.textContent = `${response.status}: No Content`;
+            alert(`${response.status}: No Content`);
         } else {
             return response.json();
         }
@@ -113,22 +128,30 @@ function updatePlace(){
         .then(data => {
         if(data){
             dataText = JSON.stringify(data);
-            responseDiv.textContent = dataText;  
+            alert(dataText); 
         }
         })
-        .catch(error => console.log(error))  
+        .catch(error => alert(error))  
     } else {
         alert("All fields are required");
     }
 };
 
-function clean(){
-    Iname.value = "";
-    Islug.value = "";
-    Icity.value = "";
-    Istate.value = "";
+function loadTable(data){
+    const table = document.querySelector("#table");
+    table.style.display = "flex";
+    for (const place of data){
+        const row = table.insertRow();
+        const nameCell = row.insertCell(0);
+        const slugCell = row.insertCell(1);
+        const cityCell = row.insertCell(2);
+        const stateCell = row.insertCell(3);
+        nameCell.innerHTML = place.name;
+        slugCell.innerHTML = place.slug;
+        cityCell.innerHTML = place.city;
+        stateCell.innerHTML = place.state;    
+    }
 }
-
 
 function validateName(){
     if (Iname.value.trim() == ""){
@@ -146,7 +169,22 @@ function validateAll(){
     }
 }
 
+function cleanValues(){
+    Iname.value = "";
+    Islug.value = "";
+    Icity.value = "";
+    Istate.value = "";
+}
 
-function format(dataText){
-    //
+function cleanTable(){
+    const table = document.querySelector("#table");
+    while ( table.rows.length > 1){
+        table.deleteRow(1);
+    }
+}
+
+function cleanText(){
+    if (text){
+        text.remove();
+    }
 }

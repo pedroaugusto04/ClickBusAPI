@@ -10,18 +10,11 @@ body {
 h1 {
     margin-top: 100px;
     margin-bottom: 40px;
-    color: black;
+    color: rgb(61, 24, 97);
     font-family: 'Courier New', Courier, monospace;
     font-size: 45px;
 }
 
-h2 {
-    margin-top: 100px;
-    margin-bottom: 40px;
-    color: black;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 45px;
-}
 
 .form{
     width: 50%;
@@ -34,19 +27,20 @@ h2 {
 }
 
 input {
-    width: 500px;
+    width: 110%;
     height: 40px;
     border-radius: 10px;
     padding-left: 8px;
 }
 
 button {
-    width: 290px;
+    font-weight: bold;
+    width: 60%;
     height: 45px;
     border-radius: 10px;
     background-color: white;
-    color: black;
-    font-size: 20px;
+    color: rebeccapurple;
+    font-size: 100%;
     font-family:   'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border: 3px solid black;
 
@@ -60,11 +54,44 @@ button:hover{
 }
 
 .response{
-    background-color: white;
     color: black;
     height: 100vh;
     width: 50%;
     display: inline-flex;
     float:right;
-    overflow-y: auto;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
+.response h1{
+    width: 70%;
+    display:inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#table {
+    display: none;
+    background-image: linear-gradient(to right,#300824, #3b0d50 );
+    color: white;
+    width: 100%;
+    table-layout: fixed;
+    overflow-y: scroll;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#table th {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+}
+
+#table th,td {
+    font-size: calc(2px + 1vw);
+    padding-right: calc(7px + 3vw);
+    padding-left: calc(7px + 3vw);
+    border: 5px solid rebeccapurple;
+}
+
+
