@@ -5,9 +5,9 @@
 package com.pedro.clickbus.api.controller;
 
 import com.pedro.clickbus.api.model.UpdatePlace;
-import com.pedro.clickbus.domain.exception.AlreadyRegisteredException;
-import com.pedro.clickbus.domain.exception.NameNotFoundException;
-import com.pedro.clickbus.domain.exception.SlugNotFoundException;
+import com.pedro.clickbus.domain.service.exception.AlreadyRegisteredException;
+import com.pedro.clickbus.domain.service.exception.NameNotFoundException;
+import com.pedro.clickbus.domain.service.exception.SlugNotFoundException;
 import com.pedro.clickbus.domain.model.Place;
 import com.pedro.clickbus.domain.service.IPlaceService;
 import jakarta.validation.Valid;

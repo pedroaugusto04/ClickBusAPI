@@ -4,9 +4,9 @@
  */
 package com.pedro.clickbus.domain.service;
 
-import com.pedro.clickbus.domain.exception.AlreadyRegisteredException;
-import com.pedro.clickbus.domain.exception.NameNotFoundException;
-import com.pedro.clickbus.domain.exception.SlugNotFoundException;
+import com.pedro.clickbus.domain.service.exception.AlreadyRegisteredException;
+import com.pedro.clickbus.domain.service.exception.NameNotFoundException;
+import com.pedro.clickbus.domain.service.exception.SlugNotFoundException;
 import com.pedro.clickbus.domain.model.Place;
 import com.pedro.clickbus.domain.repository.IPlaceRepository;
 import java.lang.reflect.Field;

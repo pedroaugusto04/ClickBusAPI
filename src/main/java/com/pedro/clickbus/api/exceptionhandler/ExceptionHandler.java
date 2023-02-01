@@ -4,9 +4,9 @@
  */
 package com.pedro.clickbus.api.exceptionhandler;
 
-import com.pedro.clickbus.domain.exception.AlreadyRegisteredException;
-import com.pedro.clickbus.domain.exception.NameNotFoundException;
-import com.pedro.clickbus.domain.exception.SlugNotFoundException;
+import com.pedro.clickbus.domain.service.exception.AlreadyRegisteredException;
+import com.pedro.clickbus.domain.service.exception.NameNotFoundException;
+import com.pedro.clickbus.domain.service.exception.SlugNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.context.MessageSource;
