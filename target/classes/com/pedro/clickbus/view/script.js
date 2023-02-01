@@ -42,9 +42,10 @@ buttonGetByName.addEventListener("click",function(event){
 
 
  function createPlace(){
+    addWaitingText();
     if (validateAll()){
         fetch("http://localhost:8080/api/places",
-    {
+        {
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/json"
@@ -56,17 +57,19 @@ buttonGetByName.addEventListener("click",function(event){
             city: Icity.value,
             state: Istate.value
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        dataText = JSON.stringify(data);
-        alert(dataText);
-    })
-    .catch(error => {
-        alert(error);
-    })
+        })
+        .then(response => response.json())
+        .then(data => {
+            dataText = JSON.stringify(data);
+            alert(dataText);
+        })
+        .catch(error => {
+            addWaitingText();
+            alert(error);
+        })
     } else {
         alert("All fields are required")
+        addWaitingText();
     }
 };
 
@@ -79,12 +82,18 @@ function getPlaceByName(){
                 cleanText();
                 loadTable(data);    
             } else {
-                text.innerHTML = "NO DATA";
+                addWaitingText();
+                alert("No data available");
+                
             }
         })
-        .catch(error => alert(error))  
+        .catch(error => {
+            addWaitingText();
+            alert(error);
+        })  
     } else {
         alert("Name is required");
+        addWaitingText();
     }
 };
 
@@ -96,14 +105,19 @@ function getPlaceByName(){
             cleanText();
             loadTable(data);    
         } else {
-            text.innerHTML = "NO DATA";
+            addWaitingText();
+            alert("No data avaliable");
         }
     })
-    .catch(error => alert(error))
+    .catch(error => {
+        addWaitingText();
+        alert(error)
+    })
 };
 
 
 function updatePlace(){
+    addWaitingText();
     if (validateAll()){
         let place = {};
         place.name = Iname.value;
@@ -131,9 +145,13 @@ function updatePlace(){
             alert(dataText); 
         }
         })
-        .catch(error => alert(error))  
+        .catch(error => {
+            addWaitingText();
+            alert(error);
+        })  
     } else {
         alert("All fields are required");
+        addWaitingText();
     }
 };
 
@@ -183,8 +201,13 @@ function cleanTable(){
     }
 }
 
+function addWaitingText(){
+    table.style.display = "none";
+    text.style.display = "inline-flex";
+}
+
 function cleanText(){
     if (text){
-        text.remove();
+        text.style.display = "none";
     }
 }
