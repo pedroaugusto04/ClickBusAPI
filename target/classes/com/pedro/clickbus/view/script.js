@@ -200,13 +200,13 @@ function cleanTable(){
     }
 }
 
-function addWaitingText(){
-    table.style.display = "none";
-    text.style.display = "inline-flex";
-}
-
 function cleanText(){
     if (text){
         text.style.display = "none";
     }
+}
+
+function addWaitingText(){
+    table.style.display = "none";
+    text.style.display = "inline-flex";
 }
