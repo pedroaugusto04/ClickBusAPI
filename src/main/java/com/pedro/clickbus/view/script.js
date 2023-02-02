@@ -59,8 +59,7 @@ buttonGetByName.addEventListener("click",function(event){
         })
         .then(response => response.json())
         .then(data => {
-            dataText = JSON.stringify(data);
-            alert(dataText);
+            alert(data);
         })
         .catch(error => {
             addWaitingText();
@@ -140,8 +139,7 @@ function updatePlace(){
         })
         .then(data => {
         if(data){
-            dataText = JSON.stringify(data);
-            alert(dataText); 
+            alert(data); 
         }
         })
         .catch(error => {
