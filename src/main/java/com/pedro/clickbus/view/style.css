@@ -72,8 +72,8 @@ button:hover{
 
 #table {
     display: none;
-    background-image: linear-gradient(to right,#300824, #3b0d50 );
-    color: white;
+    background-color: white;
+    color: black;
     width: 100%;
     table-layout: fixed;
     overflow-y: scroll;

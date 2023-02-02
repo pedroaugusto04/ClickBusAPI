@@ -6,7 +6,6 @@ const Iname = document.querySelector(".name");
 const Islug= document.querySelector(".slug");
 const Icity = document.querySelector(".city");
 const Istate = document.querySelector(".state");
-const responseDiv = document.querySelector(".response");
 const text = document.querySelector("#auxText");
 
 
