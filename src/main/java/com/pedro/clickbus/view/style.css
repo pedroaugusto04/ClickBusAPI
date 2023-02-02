@@ -41,7 +41,7 @@ button {
     background-color: white;
     color: rebeccapurple;
     font-size: 100%;
-    font-family:   'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border: 3px solid black;
 
 }
@@ -54,12 +54,10 @@ button:hover{
 }
 
 .response{
-    color: black;
     height: 100vh;
     width: 50%;
     display: inline-flex;
     float:right;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .response h1{
@@ -68,6 +66,7 @@ button:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
@@ -80,6 +79,9 @@ button:hover{
     overflow-y: scroll;
     border-collapse: collapse;
     text-align: center;
+    border: 5px solid rebeccapurple;
+    border-radius: 9px;
+    
 }
 
 #table th {
@@ -92,4 +94,6 @@ button:hover{
     padding-right: calc(7px + 3vw);
     padding-left: calc(7px + 3vw);
     border: 5px solid rebeccapurple;
+    border-left: none;
+    border-top: none;
 }
